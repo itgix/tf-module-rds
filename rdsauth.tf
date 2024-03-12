@@ -27,6 +27,8 @@ resource "aws_secretsmanager_secret" "dbsecret" {
   description = "RDS credentials"
   name        = "rds-${local.name_string}"
   kms_key_id  = aws_kms_key.rds_secret_kms_key.arn
+
+  recovery_window_in_days = 0
 }
 
 resource "aws_secretsmanager_secret_version" "dbsecret_version" {
