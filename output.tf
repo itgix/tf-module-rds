@@ -18,7 +18,7 @@ output "rds_cluster_arn" {
   value       = module.aurora_serverless_v2.arn
 }
 
-output "rds_master_credentials_kms_key_arn" {
-  description = "RDS Master Credentials kms key arn"
+output "rds_credentials_kms_key_arn" {
+  description = "RDS Credentials kms key arn"
   value       = aws_kms_key.rds_secret_kms_key.arn
 }

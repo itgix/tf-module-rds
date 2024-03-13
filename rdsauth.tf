@@ -23,6 +23,11 @@ resource "aws_kms_key" "rds_secret_kms_key" {
   })
 }
 
+resource "aws_kms_alias" "rds_secret_kms_key_alias" {
+  name          = "alias/${local.name_string}_rds_secret_key"
+  target_key_id = aws_kms_key.rds_secret_kms_key.key_id
+}
+
 resource "aws_secretsmanager_secret" "dbsecret" {
   description = "RDS credentials"
   name        = "rds-${local.name_string}"
