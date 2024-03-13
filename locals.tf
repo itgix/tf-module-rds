@@ -25,6 +25,6 @@ locals {
 
   name_string = "${local.aws_regions_short[var.aws_region]}-${var.environment}-${var.project_name}"
 
-  rds_credentials         = jsondecode(data.aws_secretsmanager_secret_version.rds_creds.secret_string)
+  rds_credentials = jsondecode(data.aws_secretsmanager_secret_version.rds_creds.secret_string)
 
 }

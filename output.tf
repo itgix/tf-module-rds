@@ -4,8 +4,23 @@ output "rds_cluster_endpoint" {
 }
 
 output "rds_master_credentials_secret_arn" {
-  description = "RDS Master Credentials Secret"
+  description = "RDS Master Credentials Secret ARN"
   value       = aws_secretsmanager_secret.dbsecret.arn
+}
+
+output "rds_master_credentials_secret_name" {
+  description = "RDS Master Credentials Secret Name"
+  value       = aws_secretsmanager_secret.dbsecret.name
+}
+
+output "rds_extra_credentials_secret_arn" {
+  description = "RDS Extra Credentials Secret ARN"
+  value       = aws_secretsmanager_secret.dbsecret_extra.arn
+}
+
+output "rds_extra_credentials_secret_name" {
+  description = "RDS Extra Credentials Secret Name"
+  value       = aws_secretsmanager_secret.dbsecret_extra.name
 }
 
 output "rds_cluster_identifier" {
