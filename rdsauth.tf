@@ -63,7 +63,7 @@ resource "aws_secretsmanager_secret" "dbsecret_extra" {
   recovery_window_in_days = 0
 }
 
-resource "aws_secretsmanager_secret_version" "dbsecret_version" {
+resource "aws_secretsmanager_secret_version" "dbsecret_extra_version" {
   secret_id = aws_secretsmanager_secret.dbsecret_extra.id
   secret_string = jsonencode({
     username = var.rds_extra_credentials.username
