@@ -72,11 +72,11 @@ resource "aws_secretsmanager_secret_version" "dbsecret_extra_version" {
   })
 }
 
-## Read secret
-data "aws_secretsmanager_secret" "dbsecret" {
-  arn = aws_secretsmanager_secret.dbsecret.arn
-}
-
-data "aws_secretsmanager_secret_version" "rds_creds" {
-  secret_id = data.aws_secretsmanager_secret.dbsecret.arn
-}
+### Read secret
+#data "aws_secretsmanager_secret" "dbsecret" {
+#  arn = aws_secretsmanager_secret.dbsecret.arn
+#}
+#
+#data "aws_secretsmanager_secret_version" "rds_creds" {
+#  secret_id = data.aws_secretsmanager_secret.dbsecret.arn
+#}

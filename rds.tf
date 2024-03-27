@@ -34,7 +34,7 @@ module "aurora_serverless_v2" {
 
   ## Authentication
   admin_user                          = var.rds_default_username
-  admin_password                      = local.rds_credentials.password
+  admin_password                      = random_password.dbpass.result
   iam_database_authentication_enabled = var.rds_iam_auth_enabled
 
   ## Logs
