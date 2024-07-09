@@ -98,6 +98,19 @@ variable "rds_iam_auth_enabled" {
   description = "Specifies whether or mappings of AWS Identity and Access Management (IAM) accounts to database accounts is enabled"
   default     = false
 }
+variable "rds_extra_credentials" {
+  description = "Database extra credentials"
+  type = object({
+    username = string
+    password = optional(string)
+    database = string
+  })
+  default = {
+    username = "demouser"
+    database = "demodb"
+  }
+}
+
 ################################################################################
 # Logs, Monitoring and Perforamnce Insights variables
 ################################################################################
