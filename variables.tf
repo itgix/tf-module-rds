@@ -138,6 +138,11 @@ variable "rds_performance_retention" {
   description = "Amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years)"
   default     = 7
 }
+variable "rds_auto_minor_version_upgrade" {
+  type        = bool
+  description = "Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window"
+  default     = false
+}
 #variable "enable_rds_s3_exports" {
 #  type        = bool
 #  description = "If a the s3 exports needs to be enabled"

@@ -19,6 +19,9 @@ module "aurora_serverless_v2" {
   db_port        = var.rds_config.db_port
   db_name        = var.rds_config.db_name
 
+  ## additional settigns
+  auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
+
   ## Networking
   vpc_id          = var.rds_vpc_id
   subnets         = var.rds_subnets
