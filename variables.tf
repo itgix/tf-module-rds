@@ -41,6 +41,12 @@ variable "rds_security_groups" {
   description = "List of security groups to be allowed to connect to the DB instance"
 }
 
+variable "rds_allowed_cidr_blocks" {
+  type        = list(string)
+  default     = []
+  description = "List of CIDRs to be allowed to connect to the DB instance"
+}
+
 ################################################################################
 # RDS variables
 ################################################################################

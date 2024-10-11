@@ -25,7 +25,9 @@ module "aurora_serverless_v2" {
   ## Networking
   vpc_id          = var.rds_vpc_id
   subnets         = var.rds_subnets
-  security_groups = var.rds_security_groups
+
+  security_groups     = var.rds_security_groups
+  allowed_cidr_blocks = var.rds_allowed_cidr_blocks
 
   ## Encryption
   kms_key_arn       = aws_kms_key.rds.arn
