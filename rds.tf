@@ -19,10 +19,15 @@ module "aurora_serverless_v2" {
   db_port        = var.rds_config.db_port
   db_name        = var.rds_config.db_name
 
+  ## additional settigns
+  auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
+
   ## Networking
   vpc_id          = var.rds_vpc_id
   subnets         = var.rds_subnets
-  security_groups = var.rds_security_groups
+
+  security_groups     = var.rds_security_groups
+  allowed_cidr_blocks = var.rds_allowed_cidr_blocks
 
   ## Encryption
   kms_key_arn       = aws_kms_key.rds.arn

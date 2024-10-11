@@ -41,6 +41,12 @@ variable "rds_security_groups" {
   description = "List of security groups to be allowed to connect to the DB instance"
 }
 
+variable "rds_allowed_cidr_blocks" {
+  type        = list(string)
+  default     = []
+  description = "List of CIDRs to be allowed to connect to the DB instance"
+}
+
 ################################################################################
 # RDS variables
 ################################################################################
@@ -137,6 +143,11 @@ variable "rds_performance_retention" {
   type        = number
   description = "Amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years)"
   default     = 7
+}
+variable "rds_auto_minor_version_upgrade" {
+  type        = bool
+  description = "Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window"
+  default     = false
 }
 #variable "enable_rds_s3_exports" {
 #  type        = bool
