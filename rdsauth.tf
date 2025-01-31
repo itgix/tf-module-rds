@@ -33,6 +33,7 @@ resource "aws_secretsmanager_secret" "dbsecret" {
   description = "RDS Master credentials"
   name        = "rds-${local.name_string}"
   kms_key_id  = aws_kms_key.rds_secret_kms_key.arn
+  tags        = var.rds_tags
 
   recovery_window_in_days = 0
 }
@@ -59,7 +60,8 @@ resource "aws_secretsmanager_secret" "dbsecret_extra" {
   description = "RDS Extra credentials"
   name        = "rds-${local.name_string}-extra"
   kms_key_id  = aws_kms_key.rds_secret_kms_key.arn
-
+  tags        = var.rds_tags
+  
   recovery_window_in_days = 0
 }
 
