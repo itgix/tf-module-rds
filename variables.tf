@@ -116,7 +116,10 @@ variable "rds_extra_credentials" {
     database = "demodb"
   }
 }
-
+variable "rds_tags" {
+  type    = map(string)
+  default = {}
+}
 ################################################################################
 # Logs, Monitoring and Perforamnce Insights variables
 ################################################################################
