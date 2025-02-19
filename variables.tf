@@ -162,3 +162,13 @@ variable "rds_auto_minor_version_upgrade" {
 #  description = "Variable to set the name of the bucket in the policy to export data from the database to S3"
 #  default     = ""
 #}
+
+################################################################################
+# Backup variables
+################################################################################
+
+variable "rds_retention_period" {
+  type        = number
+  default     = 5
+  description = "Number of days to retain backups for"
+}
