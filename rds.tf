@@ -56,4 +56,7 @@ module "aurora_serverless_v2" {
 
   ## tags 
   tags              = var.rds_tags
+
+  ## Backups retention
+  retention_period  = var.rds_backup_retention_period
 }
