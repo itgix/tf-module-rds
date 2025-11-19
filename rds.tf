@@ -19,7 +19,7 @@ module "aurora_serverless_v2" {
   db_port        = var.rds_config.db_port
   db_name        = var.rds_config.db_name
 
-  ## additional settigns
+  ## additional settings
   auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
 
   ## Networking
@@ -41,6 +41,9 @@ module "aurora_serverless_v2" {
   admin_user                          = var.rds_default_username
   admin_password                      = random_password.dbpass.result
   iam_database_authentication_enabled = var.rds_iam_auth_enabled
+
+  # For povisioned , non serverless we might need the the instance_type
+  instance_type = var.rds_instance_type
 
   ## Logs
   enabled_cloudwatch_logs_exports = var.rds_logs_exports
