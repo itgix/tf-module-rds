@@ -166,7 +166,7 @@ variable "rds_auto_minor_version_upgrade" {
 variable "rds_instance_type" {
   description = "Instance type - can be changed to db.t2.small for a non-serverless db"
   type        = string
-  default     = "serverless"
+  default     = "db.serverless"
 }
 
 ################################################################################
