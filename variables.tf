@@ -120,6 +120,15 @@ variable "rds_tags" {
   type    = map(string)
   default = {}
 }
+
+variable "rds_cluster_parameters" {
+  type = list(object({
+    name         = string
+    value        = string
+    apply_method = string
+  }))
+  default = []
+}
 ################################################################################
 # Logs, Monitoring and Perforamnce Insights variables
 ################################################################################

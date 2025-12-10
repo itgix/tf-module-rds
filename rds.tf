@@ -21,10 +21,11 @@ module "aurora_serverless_v2" {
 
   ## additional settings
   auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
+  cluster_parameters         = var.rds_cluster_parameters
 
   ## Networking
-  vpc_id          = var.rds_vpc_id
-  subnets         = var.rds_subnets
+  vpc_id  = var.rds_vpc_id
+  subnets = var.rds_subnets
 
   security_groups     = var.rds_security_groups
   allowed_cidr_blocks = var.rds_allowed_cidr_blocks
@@ -58,8 +59,8 @@ module "aurora_serverless_v2" {
   performance_insights_retention_period = var.rds_performance_retention
 
   ## tags 
-  tags              = var.rds_tags
+  tags = var.rds_tags
 
   ## Backups retention
-  retention_period  = var.rds_backup_retention_period
+  retention_period = var.rds_backup_retention_period
 }
