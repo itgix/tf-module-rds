@@ -9,7 +9,7 @@ resource "aws_kms_key" "rds" {
 #tfsec:ignore:aws-vpc-no-public-egress-sgr
 module "aurora_serverless_v2" {
   source  = "cloudposse/rds-cluster/aws"
-  version = "1.6.0"
+  version = "2.5.0"
 
   name           = var.rds_cluster_name == "" ? "rds-${local.name_string}" : var.rds_cluster_name
   engine         = var.rds_config.engine
@@ -52,6 +52,9 @@ module "aurora_serverless_v2" {
   ## Monitoring
   rds_monitoring_interval          = var.rds_monitoring_interval
   enhanced_monitoring_role_enabled = var.rds_monitoring_role_enabled
+
+  ## Instance identifier suffix - keep empty to avoid random pet name generation
+  instance_identifier_suffix = ""
 
   ## Performance Insights
   performance_insights_enabled          = var.rds_performance
