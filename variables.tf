@@ -79,7 +79,7 @@ variable "rds_config" {
 }
 variable "rds_scaling_config" {
   description = "Aurora Serverless v2 ACU range (min/max). Set to null for provisioned on-demand (non-Serverless) and set rds_instance_type to a class such as db.r6g.large."
-  type = any
+  type        = any
   default = {
     min_capacity = 1.0
     max_capacity = 4.0
