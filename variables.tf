@@ -78,16 +78,48 @@ variable "rds_config" {
   })
 }
 variable "rds_scaling_config" {
-  description = "The minimum and maximum number of Aurora capacity units (ACUs) for a DB instance"
-  type = object({
-    min_capacity = number
-    max_capacity = number
-  })
-  default = ({
+  description = "Aurora Serverless v2 ACU range (min/max). Set to null for provisioned on-demand (non-Serverless) and set rds_instance_type to a class such as db.r6g.large."
+  type        = any
+  default = {
     min_capacity = 1.0
     max_capacity = 4.0
-    }
-  )
+  }
+  nullable = true
+}
+variable "rds_autoscaling_enabled" {
+  type        = bool
+  description = "Enable Application Auto Scaling for Aurora read replica count. Uses RDSReaderAverageCPUUtilization by default. Only applies to provisioned clusters; not for Serverless v2 ACU scaling."
+  default     = false
+}
+variable "rds_autoscaling_min_capacity" {
+  type        = number
+  description = "Minimum number of Aurora read replicas (Application Auto Scaling). Maps to the cluster ReadReplicaCount dimension, not the writer."
+  default     = 1
+}
+variable "rds_autoscaling_max_capacity" {
+  type        = number
+  description = "Maximum number of Aurora read replicas maintained by the autoscaler."
+  default     = 5
+}
+variable "rds_autoscaling_target_metrics" {
+  type        = string
+  description = "Predefined metric for target tracking, e.g. RDSReaderAverageCPUUtilization (default), RDSReaderAverageDatabaseConnections"
+  default     = "RDSReaderAverageCPUUtilization"
+}
+variable "rds_autoscaling_target_value" {
+  type        = number
+  description = "Target value for the chosen metric (e.g. target average CPU for readers, percent)."
+  default     = 75
+}
+variable "rds_autoscaling_scale_in_cooldown" {
+  type        = number
+  description = "Seconds after scale-in before another scale-in."
+  default     = 300
+}
+variable "rds_autoscaling_scale_out_cooldown" {
+  type        = number
+  description = "Seconds after scale-out before another scale-out."
+  default     = 300
 }
 variable "rds_storage_encrypted" {
   type        = bool

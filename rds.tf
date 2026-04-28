@@ -1,6 +1,6 @@
-################################################################################
-# Serverless v2
-################################################################################
+#####################################################################################
+# Aurora (Serverless v2 and/or provisioned on-demand, optional replica autoscaling) #
+#####################################################################################
 resource "aws_kms_key" "rds" {
   description         = "RDS cluster encryption key"
   enable_key_rotation = true
@@ -37,6 +37,15 @@ module "aurora_serverless_v2" {
   ## Provisioning
   cluster_size                       = var.rds_config.cluster_size
   serverlessv2_scaling_configuration = var.rds_scaling_config
+
+  ## Read replica autoscaling (CPU, etc.)
+  autoscaling_enabled            = var.rds_autoscaling_enabled
+  autoscaling_min_capacity       = var.rds_autoscaling_min_capacity
+  autoscaling_max_capacity       = var.rds_autoscaling_max_capacity
+  autoscaling_target_metrics     = var.rds_autoscaling_target_metrics
+  autoscaling_target_value       = var.rds_autoscaling_target_value
+  autoscaling_scale_in_cooldown  = var.rds_autoscaling_scale_in_cooldown
+  autoscaling_scale_out_cooldown = var.rds_autoscaling_scale_out_cooldown
 
   ## Authentication
   admin_user                          = var.rds_default_username
