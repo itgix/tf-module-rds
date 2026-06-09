@@ -75,4 +75,7 @@ module "aurora_serverless_v2" {
 
   ## Backups retention
   retention_period = var.rds_backup_retention_period
+
+  ## Failover Priority
+  promotion_tier = var.failover_priority
 }

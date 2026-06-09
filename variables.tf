@@ -219,3 +219,13 @@ variable "rds_backup_retention_period" {
   default     = 5
   description = "Number of days to retain backups for"
 }
+
+variable "failover_priority" {
+  type        = number
+  default     = 0
+  description = <<-EOT
+Failover Priority setting on instance level. The reader who has lower tier has higher priority to get promoted to writer.
+
+Readers in promotion tiers 0 and 1 scale at the same time as the writer. Readers in promotion tiers 2–15 scale independently from the writer. For more information, see: https://docs.aws.amazon.com/AmazonRDS/latest/AuroraUserGuide/aurora-serverless-v2.how-it-works.html#aurora-serverless-v2.how-it-works.scaling
+EOT
+}
