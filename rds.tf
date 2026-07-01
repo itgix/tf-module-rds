@@ -22,6 +22,7 @@ module "aurora_serverless_v2" {
   ## additional settings
   auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
   cluster_parameters         = var.rds_cluster_parameters
+  instance_parameters        = var.rds_db_instance_parameters
 
   ## Networking
   vpc_id  = var.rds_vpc_id
