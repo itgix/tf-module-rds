@@ -66,10 +66,11 @@ module "aurora_serverless_v2" {
   ## Instance identifier suffix - keep empty to avoid random pet name generation
   instance_identifier_suffix = ""
 
-  ## Performance Insights
+  ## Performance Insights / Database Insights
   performance_insights_enabled          = var.rds_performance
   performance_insights_kms_key_id       = aws_kms_key.rds.arn
   performance_insights_retention_period = var.rds_performance_retention
+  database_insights_mode                = var.rds_database_insights_mode
 
   ## tags 
   tags = var.rds_tags
