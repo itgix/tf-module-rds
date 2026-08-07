@@ -195,8 +195,13 @@ variable "rds_performance" {
 }
 variable "rds_performance_retention" {
   type        = number
-  description = "Amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years)"
+  description = "Amount of time in days to retain Performance Insights data. Valid values: 7 (free tier), 731 (2 years), or any multiple of 31 up to 713 (i.e. 31, 62, 93 ... months 1-23)"
   default     = 7
+
+  validation {
+    condition     = var.rds_performance_retention == 7 || var.rds_performance_retention == 731 || (var.rds_performance_retention % 31 == 0 && var.rds_performance_retention >= 31 && var.rds_performance_retention <= 713)
+    error_message = "rds_performance_retention must be 7, 731, or a multiple of 31 between 31 and 713."
+  }
 }
 variable "rds_auto_minor_version_upgrade" {
   type        = bool
