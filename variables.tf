@@ -198,6 +198,12 @@ variable "rds_performance_retention" {
   description = "Amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years)"
   default     = 7
 }
+
+variable "database_insights_mode" {
+  type    = string
+  default = "standard"
+}
+
 variable "rds_auto_minor_version_upgrade" {
   type        = bool
   description = "Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window"

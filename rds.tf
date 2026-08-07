@@ -70,6 +70,7 @@ module "aurora_serverless_v2" {
   performance_insights_enabled          = var.rds_performance
   performance_insights_kms_key_id       = aws_kms_key.rds.arn
   performance_insights_retention_period = var.rds_performance_retention
+  database_insights_mode                = var.database_insights_mode
 
   ## tags 
   tags = var.rds_tags
