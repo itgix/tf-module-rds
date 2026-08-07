@@ -195,29 +195,8 @@ variable "rds_performance" {
 }
 variable "rds_performance_retention" {
   type        = number
-  description = "Amount of time in days to retain Performance Insights data. Valid values: 7 (free tier), any multiple of 31 from 31 to 713 (months 1-23), or 731 (2 years). Database Insights Advanced mode requires at least 465 (15 months)."
+  description = "Amount of time in days to retain Performance Insights data. Either 7 (7 days) or 731 (2 years)"
   default     = 7
-
-  validation {
-    condition     = var.rds_performance_retention == 7 || var.rds_performance_retention == 731 || (var.rds_performance_retention % 31 == 0 && var.rds_performance_retention >= 31 && var.rds_performance_retention <= 713)
-    error_message = "rds_performance_retention must be 7, a multiple of 31 between 31 and 713, or 731."
-  }
-}
-
-variable "rds_database_insights_mode" {
-  type        = string
-  description = "Database Insights mode for the cluster. Valid values: standard, advanced, or null to leave unmanaged. Advanced requires rds_performance is true and rds_performance_retention is at least 465."
-  default     = null
-
-  validation {
-    condition     = var.rds_database_insights_mode == null || contains(["standard", "advanced"], coalesce(var.rds_database_insights_mode, "standard"))
-    error_message = "rds_database_insights_mode must be \"standard\", \"advanced\", or null."
-  }
-
-  validation {
-    condition     = var.rds_database_insights_mode != "advanced" || (var.rds_performance && var.rds_performance_retention >= 465)
-    error_message = "Database Insights Advanced mode requires rds_performance = true and rds_performance_retention >= 465 (15 months)."
-  }
 }
 variable "rds_auto_minor_version_upgrade" {
   type        = bool
