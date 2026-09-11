@@ -209,6 +209,13 @@ variable "rds_auto_minor_version_upgrade" {
   description = "Indicates that minor engine upgrades will be applied automatically to the DB instance during the maintenance window"
   default     = false
 }
+
+variable "rds_maintenance_window" {
+  type        = string
+  description = "The window to perform maintenance on the DB instance"
+  default     = "wed:03:00-wed:04:00"
+}
+
 #variable "enable_rds_s3_exports" {
 #  type        = bool
 #  description = "If a the s3 exports needs to be enabled"
