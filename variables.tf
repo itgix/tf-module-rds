@@ -210,6 +210,12 @@ variable "rds_auto_minor_version_upgrade" {
   default     = false
 }
 
+variable "rds_allow_major_version_upgrade" {
+  type        = bool
+  default     = false
+  description = "Enable to allow major engine version upgrades when changing engine versions. Defaults to false."
+}
+
 variable "rds_maintenance_window" {
   type        = string
   description = "The window to perform maintenance on the DB instance"
