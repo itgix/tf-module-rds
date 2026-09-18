@@ -59,22 +59,26 @@ variable "rds_cluster_name" {
 variable "rds_config" {
   description = "Configuration for RDS resources"
   type = object({
-    engine         = string
-    engine_version = string
-    engine_mode    = string
-    cluster_family = string
-    cluster_size   = number
-    db_port        = number
-    db_name        = string
+    engine                      = string
+    engine_version              = string
+    engine_mode                 = string
+    cluster_family              = string
+    cluster_size                = number
+    db_port                     = number
+    db_name                     = string
+    allow_major_version_upgrade = bool
+    apply_immediately           = bool
   })
   default = ({
-    engine         = "aurora-postgresql"
-    engine_version = "14.5"
-    engine_mode    = "provisioned"
-    cluster_family = "aurora-postgresql14"
-    cluster_size   = 2
-    db_port        = 5432
-    db_name        = ""
+    engine                      = "aurora-postgresql"
+    engine_version              = "14.5"
+    engine_mode                 = "provisioned"
+    cluster_family              = "aurora-postgresql14"
+    cluster_size                = 2
+    db_port                     = 5432
+    db_name                     = ""
+    allow_major_version_upgrade = false
+    apply_immediately           = true
   })
 }
 variable "rds_scaling_config" {
@@ -210,11 +214,6 @@ variable "rds_auto_minor_version_upgrade" {
   default     = false
 }
 
-variable "rds_allow_major_version_upgrade" {
-  type        = bool
-  default     = false
-  description = "Enable to allow major engine version upgrades when changing engine versions. Defaults to false."
-}
 
 variable "rds_apply_immediately" {
   type        = bool
