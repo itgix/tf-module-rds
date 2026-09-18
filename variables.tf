@@ -67,7 +67,7 @@ variable "rds_config" {
     db_port                     = number
     db_name                     = string
     allow_major_version_upgrade = bool
-    apply_immediately           = bool
+    
   })
   default = ({
     engine                      = "aurora-postgresql"
@@ -78,7 +78,7 @@ variable "rds_config" {
     db_port                     = 5432
     db_name                     = ""
     allow_major_version_upgrade = false
-    apply_immediately           = true
+    
   })
 }
 variable "rds_scaling_config" {

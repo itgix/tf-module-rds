@@ -19,14 +19,11 @@ module "aurora_serverless_v2" {
   db_port                          = var.rds_config.db_port
   db_name                          = var.rds_config.db_name
   allow_major_version_upgrade      = var.rds_config.allow_major_version_upgrade
-  apply_immediately                = var.rds_config.apply_immediately
-
-  
   
 
   ## additional settings
   auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
-  apply_immediately          = var.rds_apply_immediately
+  apply_immediately          = var.rds_apply_immediately  
   maintenance_window         = var.rds_maintenance_window
   cluster_parameters         = var.rds_cluster_parameters
   instance_parameters        = var.rds_db_instance_parameters
