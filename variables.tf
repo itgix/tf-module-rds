@@ -66,7 +66,6 @@ variable "rds_config" {
     cluster_size                = number
     db_port                     = number
     db_name                     = string
-    allow_major_version_upgrade = optional(bool)
     
   })
   default = ({
@@ -77,7 +76,6 @@ variable "rds_config" {
     cluster_size                = 2
     db_port                     = 5432
     db_name                     = ""
-    allow_major_version_upgrade = true
     
   })
 }
@@ -214,6 +212,11 @@ variable "rds_auto_minor_version_upgrade" {
   default     = false
 }
 
+variable "rds_allow_major_version_upgrade" {
+  type        = bool
+  default     = true
+  description = "Enable to allow major engine version upgrades when changing engine versions. Defaults to false."
+}
 
 variable "rds_apply_immediately" {
   type        = bool
