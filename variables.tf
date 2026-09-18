@@ -219,7 +219,7 @@ variable "rds_allow_major_version_upgrade" {
 variable "rds_apply_immediately" {
   type        = bool
   description = "Specifies whether any cluster modifications are applied immediately, or during the next maintenance window"
-  default     = false
+  default     = true
 }
 
 variable "rds_maintenance_window" {
