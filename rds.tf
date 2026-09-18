@@ -21,7 +21,7 @@ module "aurora_serverless_v2" {
 
   ## DB major version upgrade
   allow_major_version_upgrade      = var.rds_allow_major_version_upgrade
-
+  apply_immediately                = var.rds_apply_immediately
 
   ## additional settings
   auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade

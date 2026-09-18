@@ -216,6 +216,12 @@ variable "rds_allow_major_version_upgrade" {
   description = "Enable to allow major engine version upgrades when changing engine versions. Defaults to false."
 }
 
+variable "rds_apply_immediately" {
+  type        = bool
+  description = "Specifies whether any cluster modifications are applied immediately, or during the next maintenance window"
+  default     = false
+}
+
 variable "rds_maintenance_window" {
   type        = string
   description = "The window to perform maintenance on the DB instance"
