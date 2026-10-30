@@ -11,19 +11,23 @@ module "aurora_serverless_v2" {
   source  = "cloudposse/rds-cluster/aws"
   version = "2.5.0"
 
-  name           = var.rds_cluster_name == "" ? "rds-${local.name_string}" : var.rds_cluster_name
-  engine         = var.rds_config.engine
-  engine_mode    = var.rds_config.engine_mode
-  engine_version = var.rds_config.engine_version
-  cluster_family = var.rds_config.cluster_family
-  db_port        = var.rds_config.db_port
-  db_name        = var.rds_config.db_name
+  name                             = var.rds_cluster_name == "" ? "rds-${local.name_string}" : var.rds_cluster_name
+  engine                           = var.rds_config.engine
+  engine_mode                      = var.rds_config.engine_mode
+  engine_version                   = var.rds_config.engine_version
+  cluster_family                   = var.rds_config.cluster_family
+  db_port                          = var.rds_config.db_port
+  db_name                          = var.rds_config.db_name
+  
+  
 
   ## additional settings
-  auto_minor_version_upgrade = var.rds_auto_minor_version_upgrade
-  maintenance_window         = var.rds_maintenance_window
-  cluster_parameters         = var.rds_cluster_parameters
-  instance_parameters        = var.rds_db_instance_parameters
+  allow_major_version_upgrade = var.rds_allow_major_version_upgrade
+  auto_minor_version_upgrade  = var.rds_auto_minor_version_upgrade
+  apply_immediately           = var.rds_apply_immediately  
+  maintenance_window          = var.rds_maintenance_window
+  cluster_parameters          = var.rds_cluster_parameters
+  instance_parameters         = var.rds_db_instance_parameters
 
   ## Networking
   vpc_id  = var.rds_vpc_id
